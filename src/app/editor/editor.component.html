@@ -1,0 +1,9 @@
+<h2>
+    WYSWYG Editor
+</h2>
+<form [formGroup]="editorForm"  (ngSubmit)="onSubmit()">
+    <quill-editor formControlName="editor" [modules]="editorConfig"(onContent)="onContent($event)" [styles]="editorStyles"></quill-editor>
+    <button type="submit">Save</button>
+</form>
+
+<div [innerHtml]="parsedHtml" readonly></div>
