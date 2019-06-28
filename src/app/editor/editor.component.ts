@@ -10,6 +10,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class EditorComponent implements OnInit {
   text: string;
 
+  showNote: boolean = false;
+
   editorForm: FormGroup;
 
   editorStyles = {
@@ -25,7 +27,7 @@ export class EditorComponent implements OnInit {
       [{ 'font': [] }],
       [{ 'script': 'sub' }, { 'script': 'super' }],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
       ['clean']
     ]
 
@@ -41,7 +43,14 @@ export class EditorComponent implements OnInit {
 
 
   onSubmit() {
+    this.showNote = true;
     console.log(this.editorForm.get('editor').value);
+
+    setTimeout(() => {
+
+      this.showNote = false;
+
+    }, 800);
   }
 
 
