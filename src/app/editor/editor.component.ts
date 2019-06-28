@@ -18,7 +18,7 @@ export class EditorComponent implements OnInit {
     height: '300px',
   };
 
-  editorConfig = {
+  editorConfig: any= {
     // toolbar: [
     //   ['bold', 'italic', 'underline', 'strike'],
     //   ['blockquote', 'code-block'],
