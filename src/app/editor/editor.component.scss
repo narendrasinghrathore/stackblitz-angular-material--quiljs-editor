@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 h1,
 h2,
 h3,
@@ -20,7 +22,7 @@ li {
 
 }
 
-:host .ql-snow .ql-toolbar button {
+.ql-snow .ql-toolbar button {
   background: black;
 
 }

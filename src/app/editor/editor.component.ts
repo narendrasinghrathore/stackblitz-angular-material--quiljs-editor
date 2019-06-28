@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class EditorComponent implements OnInit {
   text: string;
