@@ -46,7 +46,7 @@ export class EditorComponent implements OnInit {
     this.showNote = true;
     let val: string = this.editorForm.get('editor').value;
     if (val) {
-      val.replace(/<p><br><\/p>/g, '<br/>')
+      val = val.replace(/<p><br><\/p>/g, '<br/>')
     }
     console.log(val);
 
