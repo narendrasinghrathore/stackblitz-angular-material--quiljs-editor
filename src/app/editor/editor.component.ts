@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class EditorComponent implements OnInit {
   text: string;
@@ -19,17 +18,17 @@ export class EditorComponent implements OnInit {
   };
 
   editorConfig = {
-    toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],
-      ['blockquote', 'code-block'],
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ 'align': [] }],
-      [{ 'font': [] }],
-      [{ 'script': 'sub' }, { 'script': 'super' }],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      [{ 'size': ['small', false, 'large', 'huge'] }],
-      ['clean']
-    ]
+    // toolbar: [
+    //   ['bold', 'italic', 'underline', 'strike'],
+    //   ['blockquote', 'code-block'],
+    //   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    //   [{ 'align': [] }],
+    //   [{ 'font': [] }],
+    //   [{ 'script': 'sub' }, { 'script': 'super' }],
+    //   [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    //   [{ 'size': ['small', false, 'large', 'huge'] }],
+    //   ['clean']
+    // ]
 
   }
 
@@ -38,7 +37,8 @@ export class EditorComponent implements OnInit {
   ngOnInit() {
     this.editorForm = this.fb.group({
       'editor': []
-    })
+    });
+    this.editorConfig.toolbar = '#toolbar';
   }
 
 
@@ -50,7 +50,7 @@ export class EditorComponent implements OnInit {
 
       this.showNote = false;
 
-    }, 800);
+    }, 1200);
   }
 
 

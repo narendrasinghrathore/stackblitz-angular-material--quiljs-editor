@@ -1,9 +1,13 @@
 <h2>
 	WYSWYG Editor
 </h2>
+<div id="toolbar" #toolbar>
+<button mat-raised-button color="primary" type="submit">Save</button>
+</div>
 <form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
 	<quill-editor formControlName="editor" [modules]="editorConfig" (onContent)="onContent($event)" [styles]="editorStyles"></quill-editor>
-	<button type="submit">Save</button>
+
+  <button mat-raised-button color="primary" type="submit">Save</button>
 </form>
 <div *ngIf="showNote" class="note">
 <p>Get parsedHtml in console of your browser.</p>

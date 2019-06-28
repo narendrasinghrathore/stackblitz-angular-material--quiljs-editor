@@ -15,6 +15,7 @@ import { QuillModule } from 'ngx-quill'
  */
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
+import {MyOwnCustomMaterialModule} from './material.module';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,13 @@ import { EditorComponent } from './editor/editor.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    MyOwnCustomMaterialModule,
     QuillModule
   ],
   providers: [],
