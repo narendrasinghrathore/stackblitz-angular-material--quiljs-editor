@@ -5,7 +5,7 @@
 	<quill-editor formControlName="editor" [modules]="editorConfig" (onContent)="onContent($event)" [styles]="editorStyles"></quill-editor>
 	<button type="submit">Save</button>
 </form>
-<div *ngIf="showNote">
+<div *ngIf="showNote" class="note">
 <p>Get parsedHtml in console of your browser.</p>
 </div>
 
