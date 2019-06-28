@@ -4,8 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
   text: string;
@@ -18,20 +17,20 @@ export class EditorComponent implements OnInit {
     height: '300px',
   };
 
-  editorConfig: any= {
-    // toolbar: [
-    //   ['bold', 'italic', 'underline', 'strike'],
-    //   ['blockquote', 'code-block'],
-    //   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    //   [{ 'align': [] }],
-    //   [{ 'font': [] }],
-    //   [{ 'script': 'sub' }, { 'script': 'super' }],
-    //   [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-    //   [{ 'size': ['small', false, 'large', 'huge'] }],
-    //   ['clean']
-    // ]
+  editorConfig: any = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'align': [] }],
+      [{ 'font': [] }],
+      [{ 'script': 'sub' }, { 'script': 'super' }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['clean']
+    ]
 
-  }
+  };
 
   constructor(private fb: FormBuilder) { }
 
@@ -39,7 +38,7 @@ export class EditorComponent implements OnInit {
     this.editorForm = this.fb.group({
       'editor': []
     });
-    this.editorConfig.toolbar = '#toolbar';
+    
   }
 
 
