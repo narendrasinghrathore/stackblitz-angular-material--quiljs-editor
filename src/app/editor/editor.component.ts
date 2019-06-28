@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import * as Quill from 'quill';
+export interface Food {
+  value: string;
+  viewValue: string;
+}
+
 
 @Component({
   selector: 'app-editor',
@@ -17,6 +23,10 @@ export class EditorComponent implements OnInit {
     height: '300px',
   };
 
+  qlClassToReplaceWith = [
+    {class:'ql-align-right', style:'text-align:right'}
+  ];
+
   editorConfig: any = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
@@ -32,12 +42,23 @@ export class EditorComponent implements OnInit {
 
   };
 
+  foods: Food[] = [
+
+    { value: 'small', viewValue: 'Small' },
+    { value: 'large', viewValue: 'Large' },
+    { value: 'huge', viewValue: 'Huge' }
+  ]
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.editorForm = this.fb.group({
       'editor': []
     });
+
+    var SizeStyle = Quill.import('attributors/style/size');
+    Quill.register(SizeStyle, true);
+
+    // this.editorConfig.toolbar = "#toolbar";
 
   }
 
@@ -48,6 +69,8 @@ export class EditorComponent implements OnInit {
     if (val) {
       val = val.replace(/<p><br><\/p>/g, '<br/>')
     }
+
+    val = this.setCenter(val);
     console.log(val);
 
     setTimeout(() => {
@@ -55,6 +78,10 @@ export class EditorComponent implements OnInit {
       this.showNote = false;
 
     }, 1200);
+  }
+
+  setCenter(text: string) {
+    return text.replace(/class="ql-align-center"/g, 'style="text-align: center;"')
   }
 
 
