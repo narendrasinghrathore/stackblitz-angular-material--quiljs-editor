@@ -38,13 +38,17 @@ export class EditorComponent implements OnInit {
     this.editorForm = this.fb.group({
       'editor': []
     });
-    
+
   }
 
 
   onSubmit() {
     this.showNote = true;
-    console.log(this.editorForm.get('editor').value);
+    let val: string = this.editorForm.get('editor').value;
+    if (val) {
+      val.replace(/<p><br><\/p>/g, '<br/>')
+    }
+    console.log(val);
 
     setTimeout(() => {
 
