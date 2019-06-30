@@ -16,6 +16,7 @@ import { QuillModule } from 'ngx-quill'
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
 import {MyOwnCustomMaterialModule} from './material.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {MyOwnCustomMaterialModule} from './material.module';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    SharedModule.forRoot(),
     MyOwnCustomMaterialModule,
     QuillModule
   ],
