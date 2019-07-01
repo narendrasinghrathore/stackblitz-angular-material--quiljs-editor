@@ -2,8 +2,7 @@
 	WYSWYG Editor
 </h2>
 <form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
-	<quill-editor formControlName="editor" [modules]="editorConfig"
-		[styles]="editorStyles"></quill-editor>
+	<quill-editor formControlName="editor" [modules]="editorConfig" [styles]="editorStyles"></quill-editor>
 
 	<button mat-raised-button color="primary" type="submit">Save</button>
 </form>
