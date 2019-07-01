@@ -45,6 +45,7 @@ export class EditorComponent implements OnInit {
   };
 
   styles = `<style>
+  p{margin:10px auto;}
   .ql-size-small{
     font-size:12px;
   }
