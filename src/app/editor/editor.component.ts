@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import * as Quill from 'quill';
-import { of, } from 'rxjs';
-import { map, startWith, take } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 export interface Food {
   value: string;
@@ -18,7 +15,7 @@ export interface Food {
 export class EditorComponent implements OnInit {
   text: string;
 
-  showNote = false;
+  showNote = true;
 
   editorForm: FormGroup;
 
@@ -47,38 +44,46 @@ export class EditorComponent implements OnInit {
 
   };
 
-  foods: Food[] = [
+  styles = `<style>
+  .ql-size-small{
+    font-size:12px;
+  }
+  .ql-size-large{
+    font-size:24px;
+  }
+  .ql-size-huge{
+    font-size:36px;
+  }
+  .ql-align-justify{
+    text-align:justify;
+  }
+  .ql-align-center{
+    text-align:center;
+  }
+  .ql-align-right{
+    text-align:right;
+  }
+  </style>`;
 
-    { value: 'small', viewValue: 'Small' },
-    { value: 'large', viewValue: 'Large' },
-    { value: 'huge', viewValue: 'Huge' }
-  ];
   constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.editorForm = this.fb.group({
       editor: []
     });
-
-    // const SizeStyle = Quill.import('attributors/style/size');
-    // SizeStyle.whitelist = Array.from({ length: 6 }, (v, index) => index).map(
-    //   (v: any) => v + 2 + 'px'
-    // );
-    // Quill.register(SizeStyle, true);
-
-    // this.editorConfig.toolbar = "#toolbar";
-
   }
+
 
 
   onSubmit() {
     this.showNote = true;
     let val: string = this.editorForm.get('editor').value;
     if (val) {
-      val = val.replace(/<p><br><\/p>/g, '<br/>');
+      val = val.replace(/<p><br><\/p>/gi, '<br/>');
     }
 
-    val = this.setCenter(val);
+    val = this.styles + val;
+
     console.log(val);
 
     setTimeout(() => {
@@ -88,40 +93,6 @@ export class EditorComponent implements OnInit {
     }, 1200);
   }
 
-  styleTagPresent(s: string) {
-    return s.search(/style/g);
-  }
-
-  /**
-   * Check if class="ql-align-center" present in string
-   * and add "text-align:center" to style attribute
-   * @param text: string
-   */
-  setCenter(text: string) {
-    return text.replace(/class="ql-align-center"/g, 'style="text-align: center;"');
-  }
-
-  /**
-   * console if style is present or not in browser console.
-   */
-
-  isStylePresent() {
-
-    console.log();
-  }
-
-  addFood() {
-    this.foods.push({
-      value: 'somevalue',
-      viewValue: 'Food'
-    });
-  }
-
-
-  onSizeChange(e) {
-    console.log(e);
-  }
-
   /**
    * Get editor form control value from reactive form model
    * and return html string to display on html
@@ -129,8 +100,7 @@ export class EditorComponent implements OnInit {
   get parsedHtml() {
     const s: string = this.editorForm.get('editor').value;
     if (s) {
-      return this.sanitizer.bypassSecurityTrustHtml(s.replace(/<p><br><\/p>/g, '<br/>')
-        .replace(/class="ql-size-huge"/g, 'style="font-size:36px"'));
+      return this.sanitizer.bypassSecurityTrustHtml(this.styles + s);
     }
     return '';
   }

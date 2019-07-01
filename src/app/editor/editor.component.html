@@ -2,7 +2,7 @@
 	WYSWYG Editor
 </h2>
 <form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
-	<quill-editor formControlName="editor" [modules]="editorConfig" (onContent)="onContent($event)"
+	<quill-editor formControlName="editor" [modules]="editorConfig"
 		[styles]="editorStyles"></quill-editor>
 
 	<button mat-raised-button color="primary" type="submit">Save</button>
@@ -11,21 +11,4 @@
 	<p>Get parsedHtml in console of your browser.</p>
 </div>
 
-<div>
-	<button mat-button-flat (click)="isStylePresent()">Check style present</button>
-</div>
-
-<div [innerHtml]="parsedHtml"></div>
-
-<span class="ql-size-huge">
-	Testing
-</span>
-<div>
-	<ul>
-		<li  class="ql-size-huge" *ngFor="let food of foods">{{food.viewValue}}</li>
-	</ul>
-</div>
-
-<button mat-raised-button (click)="addFood()">
-	Add Food
-</button>
+<div [innerHTML]="parsedHtml"></div>
